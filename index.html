@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Converting Depth Images and Point Clouds for Feature-based Pose Estimation.">
+  <meta name="keywords" content="depth, image, 3d, scene, feature, point, cloud, pose, estimation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Converting Depth Images and Point Clouds for Feature-based Pose Estimation</title>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Converting Depth Images and Point Clouds for Feature-based Pose Estimation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="mailto:Robert.Loesch@informatik.tu-freiberg.de">Robert Lösch</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="mailto:sastubam@dzsf.bund.de">Mark Sastuba</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="mailto:development@jonas-toth.eu">Jonas Toth</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="mailto:jung@informatik.tu-freiberg.de">Bernhard Jung</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Technical University Bergakademie Freiberg,</span>
+            <span class="author-block"><sup>2</sup>German Centre for Rail Traffic Research at the Federal Railway Authority</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In recent years, depth sensors became more and
+            more affordable and found their way into a growing amount
+            of robotic systems. However, mono- or multi-modal sensor
+            registration, often a necessary step for further processing, faces
+            many challenges on raw depth images or point clouds.
+          </p>
+          <p>
+            This paper presents a method of converting depth data into images
+            capable of visualizing spatial details that are basically hidden in
+            traditional depth images. After noise removal, a neighborhood
+            of points forms two normal vectors whose difference is encoded
+            into this new conversion. Compared to Bearing Angle images,
+            our method yields brighter, higher-contrast images with more
+            visible contours and more details.
+          </p>
+          <p>
+            We tested feature-based pose
+            estimation of both conversions in a visual odometry task and
+            RGB-D SLAM. For all tested features, AKAZE, ORB, SIFT,
+            and SURF, our new Flexion images yield better results than
+            Bearing Angle images and show great potential to bridge the
+            gap between depth data and classical computer vision.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{Losch2023,
+  author    = {L{\"o}sch, Robert and Sastuba, Mark and Toth, Jonas Jung, Bernhard},
+  title     = {Converting Depth Images and Point Clouds for Feature-based Pose Estimation},
+  booktitle = {2023 {{IEEE}}/{{RSJ International Conference}} on {{Intelligent Robots}} and {{Systems}} ({{IROS}})},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+</body>
+</html>
