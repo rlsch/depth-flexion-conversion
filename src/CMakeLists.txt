@@ -1,7 +1,7 @@
 find_package(Threads REQUIRED)
 
 add_library(sens_loc)
-list(APPEND sens_loc_headers 
+list(APPEND sens_loc_headers
     "${CMAKE_CURRENT_LIST_DIR}/include/sens_loc/version.h"
     "${CMAKE_CURRENT_LIST_DIR}/include/sens_loc/analysis/distance.h"
     "${CMAKE_CURRENT_LIST_DIR}/include/sens_loc/analysis/keypoints.h"
@@ -70,6 +70,7 @@ target_link_libraries(sens_loc
     Eigen3::Eigen
     ${OpenCV_LIBS}
     ${Boost_LIBRARY_DIRS}
+    Iconv::Iconv
     )
 target_compile_features(sens_loc INTERFACE cxx_std_17)
 add_dependencies(sens_loc dependencies)

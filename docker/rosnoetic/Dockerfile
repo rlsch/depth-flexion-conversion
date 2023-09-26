@@ -1,5 +1,5 @@
-FROM ros:kinetic
-LABEL maintainer="jonas.toth@student.tu-freiberg.de"
+FROM ros:noetic
+LABEL maintainer="robert.loesch@informatik.tu-freiberg.de"
 
 RUN apt-get update \
  && apt-get install -y \
@@ -18,7 +18,11 @@ RUN apt-get update \
     gcc-9 g++-9 \
     unzip wget \
  && pip3 install --upgrade pip 
-# && pip3 install cmake==3.26.4
+# && pip3 install cmake
+
+RUN apt install -y \
+    ros-noetic-image-transport \
+    ros-noetic-cv-bridge
 
 ARG cmake_version="3.26.4"
 RUN apt-get update \
@@ -27,16 +31,6 @@ RUN apt-get update \
  && chmod +x cmake-*.sh \
  && ./cmake-$cmake_version-Linux-x86_64.sh --prefix=/usr --skip-license \
  && rm -rf * && cd /
-
-ARG ninja_version="1.11.1"
-WORKDIR /ninja
-RUN wget --quiet https://github.com/ninja-build/ninja/archive/v$ninja_version.tar.gz \
- && tar xf v$ninja_version.tar.gz && cd ninja-$ninja_version \
- && ./configure.py --bootstrap \
- && ./ninja \
- && mv ninja /usr/bin/ \
- && cd / \
- && rm -rf /ninja
 
 ARG cv_version="4.5.0"
 RUN mkdir -p /opencv/build_cv && cd /opencv \
@@ -66,14 +60,6 @@ RUN mkdir -p /opencv/build_cv && cd /opencv \
  && ninja install \
  && cd / && rm -rf /opencv
 
-ARG eigen_version="3.3.7"
-RUN mkdir -p /eigen3 && cd /eigen3 \
- && wget --quiet https://gitlab.com/libeigen/eigen/-/archive/$eigen_version/eigen-$eigen_version.tar.gz \
- && tar xf eigen-$eigen_version.tar.gz && mv eigen-$eigen_version eigen && cd eigen \
- && mkdir build && cd build \
- && CC=gcc-9 CXX=g++-9 cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
- && ninja install
-
 ARG boost_version="1.73.0"
 ARG boost_version_string="1_73_0"
 RUN mkdir -p /boost cd /boost \
@@ -82,7 +68,3 @@ RUN mkdir -p /boost cd /boost \
  && ./bootstrap.sh --prefix=/usr \
  && ./b2 install link=static variant=release --without-python \
  && cd / && rm -rf /boost
-
-RUN apt install -y \
-    ros-kinetic-image-transport \
-    ros-kinetic-cv-bridge

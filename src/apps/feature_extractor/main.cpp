@@ -405,7 +405,18 @@ MAIN_HEAD("Batch-processing tool to extract visual features") {
     using cv::AKAZE;
     using cv::BRISK;
     using cv::ORB;
+#if (CV_MAJOR_VERSION > 4 || (CV_MAJOR_VERSION == 4 && CV_MINOR_VERSION >= 4) )
+        /* version >= 4.4.0 */
+    using cv::SIFT;
+#else
+
+#if defined (OPENCV_ENABLE_NONFREE) && defined (HAVE_OPENCV_XFEATURES2D)
     using cv::xfeatures2d::SIFT;
+#else
+        std::cout << "xfeatures2d module is not available or nonfree is not enabled." << std::endl;
+        std::cout << "No SIFT available." << std::endl;
+#endif
+#endif
     using cv::xfeatures2d::SURF;
 
     auto argument_visitor = overloaded{

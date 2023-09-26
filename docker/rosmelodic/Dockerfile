@@ -1,5 +1,5 @@
 FROM ros:melodic
-LABEL maintainer="jonas.toth@student.tu-freiberg.de"
+LABEL maintainer="robert.loesch@informatik.tu-freiberg.de"
 
 RUN apt-get update \
  && apt-get install -y \
@@ -7,16 +7,30 @@ RUN apt-get update \
     git \
     python3-pip \
     ninja-build \
+    libeigen3-dev \
+    libboost-all-dev \
     software-properties-common \
  && add-apt-repository ppa:ubuntu-toolchain-r/test \
  && apt-get update \
  && apt-get install -y  \
     gcc-9 g++-9 \
     unzip wget \
- && pip3 install --upgrade pip \
- && pip install cmake
+ && pip3 install --upgrade pip 
+# && pip install cmake
 
-ARG cv_version="4.3.0"
+RUN apt install -y \
+    ros-melodic-image-transport \
+    ros-melodic-cv-bridge
+
+ARG cmake_version="3.26.4"
+RUN apt-get update \
+ && mkdir /cmake && cd /cmake \
+ && wget https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-Linux-x86_64.sh \
+ && chmod +x cmake-*.sh \
+ && ./cmake-$cmake_version-Linux-x86_64.sh --prefix=/usr --skip-license \
+ && rm -rf * && cd /
+
+ARG cv_version="4.5.0"
 RUN mkdir -p /opencv/build_cv && cd /opencv \
  && wget --quiet https://github.com/opencv/opencv/archive/$cv_version.zip \
  && unzip $cv_version.zip && rm $cv_version.zip \
@@ -44,19 +58,11 @@ RUN mkdir -p /opencv/build_cv && cd /opencv \
 && ninja install \
 && cd / && rm -rf /opencv
 
-ARG eigen_version="3.3.7"
-RUN mkdir -p /eigen3 && cd /eigen3 \
- && wget --quiet http://bitbucket.org/eigen/eigen/get/$eigen_version.tar.gz \
- && tar xf $eigen_version.tar.gz && mv eigen* eigen && cd eigen \
- && mkdir build && cd build \
- && cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
- && ninja install
-
 ARG boost_version="1.73.0"
 ARG boost_version_string="1_73_0"
 RUN mkdir -p /boost cd /boost \
- && wget --quiet https://dl.bintray.com/boostorg/release/${boost_version}/source/boost_${boost_version_string}.tar.gz \
- && tar xf boost_$boost_version_string.tar.gz && cd boost_$boost_version_string \
+ && wget --quiet https://boostorg.jfrog.io/artifactory/main/release/${boost_version}/source/boost_${boost_version_string}.tar.gz  \
+ && tar xf boost_$boost_version_string.tar.gz && cd boost_${boost_version_string} \
  && ./bootstrap.sh --prefix=/usr \
  && ./b2 install link=static variant=release --without-python \
  && cd / && rm -rf /boost

@@ -32,7 +32,7 @@ RUN apt-get update \
     gcc-9 g++-9 \
     lcov gcovr \
  && pip3 install --upgrade pip \
- && pip install cmake
+ && pip install cmake==3.22.0
 
 ARG cv_version="4.3.0"
 RUN mkdir -p /opencv/build_cv && cd /opencv \
@@ -62,8 +62,8 @@ RUN mkdir -p /opencv/build_cv && cd /opencv \
 
 ARG eigen_version="3.3.7"
 RUN mkdir -p /eigen3 && cd /eigen3 \
- && wget --quiet http://bitbucket.org/eigen/eigen/get/$eigen_version.tar.gz \
- && tar xf $eigen_version.tar.gz && mv eigen* eigen && cd eigen \
+ && wget --quiet https://gitlab.com/libeigen/eigen/-/archive/$eigen_version/eigen-$eigen_version.tar.gz \
+ && tar xf eigen-$eigen_version.tar.gz && mv eigen-$eigen_version eigen && cd eigen \
  && mkdir build && cd build \
  && cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
  && ninja install
@@ -71,7 +71,7 @@ RUN mkdir -p /eigen3 && cd /eigen3 \
 ARG boost_version="1.73.0"
 ARG boost_version_string="1_73_0"
 RUN mkdir -p /boost cd /boost \
- && wget --quiet https://dl.bintray.com/boostorg/release/${boost_version}/source/boost_${boost_version_string}.tar.gz \
+ && wget --quiet https://boostorg.jfrog.io/artifactory/main/release/${boost_version}/source/boost_${boost_version_string}.tar.gz  \
  && tar xf boost_$boost_version_string.tar.gz && rm -f boost_$boost_version_string.tar.gz && cd boost_$boost_version_string \
  && ./bootstrap.sh --prefix=/usr \
  && ./b2 install link=static variant=release --without-python \

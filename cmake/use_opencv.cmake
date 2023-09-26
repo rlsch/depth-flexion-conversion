@@ -76,7 +76,7 @@ if (NOT OpenCV_FOUND)
     endif (EXISTS "${CMAKE_CURRENT_BINARY_DIR}/third_party/opencv-install/usr")
 # OpenCV was found from the system
 else ()
-    message(STATUS "Found opencv. Assuming it includes non-free features!")
+    message(STATUS "Found opencv ${OpenCV_VERSION}. Assuming it includes non-free features!")
     add_custom_target(opencv)
     set(opencv_built TRUE)
 endif (NOT OpenCV_FOUND)

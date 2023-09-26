@@ -2,9 +2,9 @@ FROM ubuntu:20.04
 LABEL maintainer="jonas.toth@student.tu-freiberg.de"
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update \
- && apt-get dist-upgrade -y \
- && apt-get install -y \
+RUN apt update \
+ && apt dist-upgrade -y \
+ && apt install -y \
     build-essential \
     cmake \
     g++ gcc \
@@ -18,7 +18,7 @@ RUN apt-get update \
     libpng-dev \
     libjpeg-dev
 
-ARG cv_version="4.3.0"
+ARG cv_version="4.5.0"
 RUN mkdir -p /opencv/build_cv && cd /opencv \
  && wget --quiet https://github.com/opencv/opencv/archive/$cv_version.zip \
  && unzip $cv_version.zip && mv opencv-$cv_version opencv && rm $cv_version.zip \
@@ -43,3 +43,12 @@ RUN mkdir -p /opencv/build_cv && cd /opencv \
  && ninja \
  && ninja install \
  && cd /opencv && rm -rf build_cv
+
+ARG boost_version="1.73.0"
+ARG boost_version_string="1_73_0"
+RUN mkdir -p /boost cd /boost \
+ && wget --quiet https://boostorg.jfrog.io/artifactory/main/release/${boost_version}/source/boost_${boost_version_string}.tar.gz  \
+ && tar xf boost_$boost_version_string.tar.gz && cd boost_${boost_version_string} \
+ && ./bootstrap.sh --prefix=/usr \
+ && ./b2 install link=static variant=release --without-python \
+ && cd / && rm -rf /boost

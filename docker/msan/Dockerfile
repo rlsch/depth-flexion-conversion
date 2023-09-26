@@ -1,18 +1,23 @@
-FROM ubuntu:18.04
-LABEL maintainer="jonas.toth@student.tu-freiberg.de"
+FROM ubuntu:20.04
+LABEL maintainer="robert.loesch@informatik.tu-freiberg.de"
 
-ARG cmake_version="3.18.0"
+ARG DEBIAN_FRONTEND=noninteractive
+ARG cmake_version="3.26.4"
 RUN apt-get update \
  && apt-get install -y wget gnupg2 \
  && wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
- && echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main" >> /etc/apt/sources.list \
+ && echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main" >> /etc/apt/sources.list \
+ && echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-16 main" >> /etc/apt/sources.list \
  && apt-get update \
  && apt-get dist-upgrade -y \
  && apt-get install -y \
     build-essential \
     git \
     ninja-build \
+    libeigen3-dev \
+    libboost-all-dev \
     clang-10 \
+    clang-16 \
     unzip \
     rsync \
  && mkdir /cmake && cd /cmake \
@@ -42,7 +47,7 @@ RUN ninja cxx \
 ENV LD_LIBRARY_PATH="/usr/local/lib/"
 
 WORKDIR /opencv
-ARG cv_version="4.3.0"
+ARG cv_version="4.5.0"
 RUN mkdir -p build_cv \
  && wget --quiet https://github.com/opencv/opencv/archive/$cv_version.zip \
  && unzip $cv_version.zip && mv opencv-$cv_version opencv && rm $cv_version.zip \
@@ -91,25 +96,18 @@ RUN mkdir -p build_cv \
  && ninja install \
  && cd /opencv && rm -rf build_cv
 
-ARG eigen_version="3.3.7"
-RUN mkdir -p /eigen3 && cd /eigen3 \
- && wget --quiet http://bitbucket.org/eigen/eigen/get/$eigen_version.tar.gz \
- && tar xf $eigen_version.tar.gz && mv eigen* eigen && cd eigen \
- && mkdir build && cd build \
- && cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
- && ninja install
-
 RUN update-alternatives --install /usr/bin/clang clang /usr/lib/llvm-10/bin/clang 10 \
  && update-alternatives --install /usr/bin/clang++ clang++ /usr/lib/llvm-10/bin/clang++ 10 \
  && update-alternatives --install /usr/bin/cc cc /usr/bin/clang 20 \
  && update-alternatives --set cc /usr/bin/clang \
  && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 20 \
  && update-alternatives --set c++ /usr/bin/clang++
+
 ARG boost_version="1.73.0"
 ARG boost_version_string="1_73_0"
 RUN mkdir -p /boost && cd /boost \
- && wget --quiet https://dl.bintray.com/boostorg/release/${boost_version}/source/boost_${boost_version_string}.tar.gz \
- && tar xf boost_$boost_version_string.tar.gz && cd boost_$boost_version_string \
+ && wget --quiet https://boostorg.jfrog.io/artifactory/main/release/${boost_version}/source/boost_${boost_version_string}.tar.gz  \
+ && tar xf boost_$boost_version_string.tar.gz && cd boost_${boost_version_string} \
  && CC=clang-10 CXX=clang++-10 \
     ./bootstrap.sh --prefix=/usr --with-toolset=clang \
  && ./b2 install link=static variant=release \

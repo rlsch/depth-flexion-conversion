@@ -3,7 +3,9 @@
 
 cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 
-cmake_policy(SET CMP0127 OLD)
+if(CMAKE_VERSION VERSION_GREATER 3.22)
+    cmake_policy(SET CMP0127 OLD)
+endif()
 
 # Assuming the canonical version is listed in a single line
 # This would be in several parts if picking up from MAJOR, MINOR, etc.
@@ -110,6 +112,7 @@ include(use_taskflow)
 include(use_gsl)
 include(use_fmtlib)
 include(use_nonius)
+find_package(Iconv)
 
 # cmake utility code for the repository
 include(check_dependencies_built)
