@@ -49,6 +49,30 @@ TEST_CASE("world coordinate") {
         REQUIRE(diff.V() == Approx(8.0));
         REQUIRE(diff.W() == Approx(3.0));
     }
+    SUBCASE("sum") {
+        coordinate<double, frame::world> p1{10., 2., -5.};
+        coordinate<double, frame::world> p2{11., 10., -2.};
+
+        coordinate<double, frame::world> sum = p2 + p1;
+
+        REQUIRE(sum.U() == Approx(21.0));
+        REQUIRE(sum.V() == Approx(12.0));
+        REQUIRE(sum.W() == Approx(-7.0));
+    }
+    SUBCASE("multiplication") {
+        coordinate<double, frame::world> p1{10., -2., -5.};
+        coordinate<double, frame::world> p2{11., 10., -2.};
+
+        coordinate<double, frame::world> res1 = p1 * 10.;
+        coordinate<double, frame::world> res2 = p2 * -5.;
+
+        REQUIRE(res1.U() == Approx(100.0));
+        REQUIRE(res1.V() == Approx(-20.0));
+        REQUIRE(res1.W() == Approx(-50.0));
+        REQUIRE(res2.U() == Approx(-55.0));
+        REQUIRE(res2.V() == Approx(-50.0));
+        REQUIRE(res2.W() == Approx(10.0));
+    }
 }
 
 TEST_CASE("pixel coordinate") {

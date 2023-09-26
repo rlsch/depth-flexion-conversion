@@ -11,9 +11,16 @@ bool scale_converter::process_file(const math::image<float>& depth_image,
     Expects(!_files.output.empty());
     using namespace sens_loc::conversion;
     const auto res = depth_scaling(depth_image, _scale, _offset);
-    cv::Mat    depth_16bit(depth_image.h(), depth_image.w(), CV_16U);
-    res.data().convertTo(depth_16bit, CV_16U);
-    bool success = cv::imwrite(fmt::format(_files.output, idx), depth_16bit);
+    cv::Mat depth;
+    if (this->_files.saveAs16Bit) {
+        depth = cv::Mat(depth_image.h(), depth_image.w(), CV_16U);
+        res.data().convertTo(depth, CV_16U);
+    } else {
+        depth = cv::Mat(depth_image.h(), depth_image.w(), CV_8U);
+        res.data().convertTo(depth, CV_8U);
+    }
+
+    bool success = cv::imwrite(fmt::format(_files.output, idx), depth);
 
     return success;
 }

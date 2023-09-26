@@ -7,6 +7,9 @@
 #include <sens_loc/conversion/depth_to_bearing.h>
 #include <sens_loc/conversion/depth_to_curvature.h>
 #include <sens_loc/conversion/depth_to_flexion.h>
+#include <sens_loc/conversion/depth_to_flexion_nxn.h>
+#include <sens_loc/conversion/depth_to_flexion_normalized.h>
+#include <sens_loc/conversion/depth_to_flexion_angle.h>
 #include <sens_loc/conversion/depth_to_laserscan.h>
 #include <sens_loc/conversion/depth_to_max_curve.h>
 #include <util/batch_converter.h>
@@ -166,6 +169,69 @@ class flexion_converter : public batch_sensor_converter<Intrinsic> {
                                     int idx) const noexcept override;
 };
 #include "converter_flexion.h.inl"
+
+/// Convert range-images to flexion images.
+/// \sa conversion::depth_to_flexion
+template <typename Intrinsic>
+class flexion_converter_nxn : public batch_sensor_converter<Intrinsic> {
+  public:
+    flexion_converter_nxn(const file_patterns& files,
+                          depth_type           t,
+                          Intrinsic            intrinsic)
+        : batch_sensor_converter<Intrinsic>(files, t, std::move(intrinsic)) {}
+    flexion_converter_nxn(const flexion_converter_nxn&) = default;
+    flexion_converter_nxn(flexion_converter_nxn&&)      = default;
+    flexion_converter_nxn& operator=(const flexion_converter_nxn&) = default;
+    flexion_converter_nxn& operator=(flexion_converter_nxn&&) = default;
+    ~flexion_converter_nxn() override                     = default;
+
+  private:
+    [[nodiscard]] bool process_file(const math::image<float>& depth_image,
+                                    int idx) const noexcept override;
+};
+#include "converter_flexion_nxn.h.inl"
+
+/// Convert range-images to flexion images.
+/// \sa conversion::depth_to_flexion
+template <typename Intrinsic>
+class flexion_converter_normalized : public batch_sensor_converter<Intrinsic> {
+  public:
+    flexion_converter_normalized(const file_patterns& files,
+                                 depth_type           t,
+                                 Intrinsic            intrinsic)
+        : batch_sensor_converter<Intrinsic>(files, t, std::move(intrinsic)) {}
+    flexion_converter_normalized(const flexion_converter_normalized&) = default;
+    flexion_converter_normalized(flexion_converter_normalized&&)      = default;
+    flexion_converter_normalized& operator=(const flexion_converter_normalized&) = default;
+    flexion_converter_normalized& operator=(flexion_converter_normalized&&) = default;
+    ~flexion_converter_normalized() override                     = default;
+
+  private:
+    [[nodiscard]] bool process_file(const math::image<float>& depth_image,
+                                    int idx) const noexcept override;
+};
+#include "converter_flexion_normalized.h.inl"
+
+/// Convert range-images to flexion images.
+/// \sa conversion::depth_to_flexion
+template <typename Intrinsic>
+class flexion_converter_angle : public batch_sensor_converter<Intrinsic> {
+  public:
+    flexion_converter_angle(const file_patterns& files,
+                            depth_type           t,
+                            Intrinsic            intrinsic)
+        : batch_sensor_converter<Intrinsic>(files, t, std::move(intrinsic)) {}
+    flexion_converter_angle(const flexion_converter_angle&) = default;
+    flexion_converter_angle(flexion_converter_angle&&)      = default;
+    flexion_converter_angle& operator=(const flexion_converter_angle&) = default;
+    flexion_converter_angle& operator=(flexion_converter_angle&&) = default;
+    ~flexion_converter_angle() override                     = default;
+
+  private:
+    [[nodiscard]] bool process_file(const math::image<float>& depth_image,
+                                    int idx) const noexcept override;
+};
+#include "converter_flexion_angle.h.inl"
 
 /// @}
 

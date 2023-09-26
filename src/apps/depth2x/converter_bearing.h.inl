@@ -12,9 +12,14 @@ bool bearing_converter<Intrinsic>::process_file(
     if (!this->_files.DIRECTION.empty()) {                                     \
         math::image<float> bearing = depth_to_bearing<direction::DIRECTION>(   \
             depth_image, this->intrinsic);                                     \
+        cv::Mat img;                                                           \
+        if (this->_files.saveAs16Bit) {                                        \
+            img = convert_bearing<float, ushort>(bearing).data();              \
+        } else {                                                               \
+            img = convert_bearing<float, uchar>(bearing).data();               \
+        }                                                                      \
         bool success =                                                         \
-            cv::imwrite(fmt::format(this->_files.DIRECTION, idx),              \
-                        convert_bearing<float, ushort>(bearing).data());       \
+            cv::imwrite(fmt::format(this->_files.DIRECTION, idx), img);        \
         final_result &= success;                                               \
     }
 

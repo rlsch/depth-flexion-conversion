@@ -122,6 +122,12 @@ MAIN_HEAD("Batch-conversion of depth images to various derived image-types.") {
                 "(pinhole-range) or orthographic depths (pinhole-depth)",
                 /*defaulted=*/true);
 
+    files.saveAs16Bit = true;
+    app.add_set("-f,--save-format", files.saveAs16Bit, {true, false},
+                "Bit depth of the converted and saved image files."
+                "1 -> 16 bit, 0 -> 8 bit",
+                /*defaulted=*/true);
+
     int start_idx = 0;
     app.add_option("-s,--start", start_idx, "Start index of batch, inclusive")
         ->required();
@@ -279,7 +285,68 @@ MAIN_HEAD("Batch-conversion of depth images to various derived image-types.") {
                      "Output pattern for the flexion images.")
         ->required();
 
-    // Flexion images
+    // Flexion nxn images
+    CLI::App* flexion_nxn_cmd = app.add_subcommand(
+        "flexion_nxn", "Convert depth images into flexion images");
+    flexion_nxn_cmd->footer("\n\n"
+                        "An example invocation of the tool is:\n"
+                        "\n"
+                        "depth2x flexion_nxn --calibration intrinsic.txt \\\n"
+                        "                    --input depth_{:04d}.png \\\n"
+                        "                    --start 0 \\\n"
+                        "                    --end 100 \\\n"
+                        "                    --output flexion_{:04d}.png"
+                        "\n"
+                        "This will read 'depth_0000.png ...' and create "
+                        "'flexion_0000.png ...' in the working directory.");
+    flexion_nxn_cmd->add_option(
+        "-n,--neighbors", files.neighbors,
+        "Calculate Flexion image with an nxn neighborhood.")
+        ->required();
+    flexion_nxn_cmd
+        ->add_option("-o,--output", files.output,
+                     "Output pattern for the flexion images.")
+        ->required();
+
+    // Flexion normalized images
+    CLI::App* flexion_normalized_cmd = app.add_subcommand(
+        "flexion_normalized", "Convert depth images into flexion images with normalized normals");
+    flexion_normalized_cmd->footer("\n\n"
+                               "An example invocation of the tool is:\n"
+                               "\n"
+                               "depth2x flexion_normalized --calibration intrinsic.txt \\\n"
+                               "                           --input depth_{:04d}.png \\\n"
+                               "                           --start 0 \\\n"
+                               "                           --end 100 \\\n"
+                               "                           --output flexion_{:04d}.png"
+                               "\n"
+                               "This will read 'depth_0000.png ...' and create "
+                               "'flexion_0000.png ...' in the working directory.");
+    flexion_normalized_cmd
+        ->add_option("-o,--output", files.output,
+                     "Output pattern for the flexion images.")
+        ->required();
+
+    // Flexion angle images
+    CLI::App* flexion_angle_cmd = app.add_subcommand(
+        "flexion_angle", "Convert depth images into flexion angle images");
+    flexion_angle_cmd->footer("\n\n"
+                         "An example invocation of the tool is:\n"
+                         "\n"
+                         "depth2x flexion_angle --calibration intrinsic.txt \\\n"
+                         "                      --input depth_{:04d}.png \\\n"
+                         "                      --start 0 \\\n"
+                         "                      --end 100 \\\n"
+                         "                      --output flexion_{:04d}.png"
+                         "\n"
+                         "This will read 'depth_0000.png ...' and create "
+                         "'flexion_0000.png ...' in the working directory.");
+    flexion_angle_cmd
+        ->add_option("-o,--output", files.output,
+                     "Output pattern for the flexion images.")
+        ->required();
+
+    // Scale images
     CLI::App* scale_cmd = app.add_subcommand(
         "scale", "Scale depth images and add an optional offset.");
     scale_cmd->footer("\n\n"
@@ -355,6 +422,15 @@ MAIN_HEAD("Batch-conversion of depth images to various derived image-types.") {
                 files, input_enum, *potential_intrinsic);
         if (*flexion_cmd)
             return detail::make_converter<flexion_converter>(
+                files, input_enum, *potential_intrinsic);
+        if (*flexion_nxn_cmd)
+            return detail::make_converter<flexion_converter_nxn>(
+                files, input_enum, *potential_intrinsic);
+        if (*flexion_normalized_cmd)
+            return detail::make_converter<flexion_converter_normalized>(
+                files, input_enum, *potential_intrinsic);
+        if (*flexion_angle_cmd)
+            return detail::make_converter<flexion_converter_angle>(
                 files, input_enum, *potential_intrinsic);
         if (*gauss_curv_cmd)
             return detail::make_converter<gauss_curv_converter>(

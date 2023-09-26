@@ -73,7 +73,7 @@ bool parallel_indexed_file_processing(int          start,
                       << " images took " << rang::style::bold << std::fixed
                       << std::setprecision(2)
                       << (dur_deci_seconds.count() / 100.) << rang::style::reset
-                      << " seconds!\n";
+                      << " seconds!\n\n";
         }
 
         if (fails > 0) {

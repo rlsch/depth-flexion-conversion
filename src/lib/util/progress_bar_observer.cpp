@@ -42,7 +42,7 @@ void progress_bar_observer::print_bar(bool increment) noexcept {
     }
     std::cout << rang::style::reset << std::flush;
 
-    if (_done == _total_tasks)
-        std::cout << std::endl;
+//    if (_done == _total_tasks)
+//        std::cout << std::endl;
 }
 }  // namespace sens_loc::util

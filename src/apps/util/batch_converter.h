@@ -60,6 +60,9 @@ struct file_patterns {
                                ///< diagonal images.
     std::string antidiagonal;  ///< Only relevant for bearing angles, output for
                                ///< antidiagonal images.
+    bool saveAs16Bit;          ///< Bit depth of output image, 1 = 16bit, 0 = 8bit
+    std::string neighbors;     ///< Only relevant for flexion images, output for
+                               ///< images with nxn neighborhood.
 };
 
 /// Just local helper for batch conversion tasks over a given index range.

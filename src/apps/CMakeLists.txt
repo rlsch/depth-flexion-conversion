@@ -28,6 +28,9 @@ target_sources(depth2x
     "${CMAKE_CURRENT_LIST_DIR}/depth2x/converter_bearing.h.inl"
     "${CMAKE_CURRENT_LIST_DIR}/depth2x/converter_curvature.h.inl"
     "${CMAKE_CURRENT_LIST_DIR}/depth2x/converter_flexion.h.inl"
+    "${CMAKE_CURRENT_LIST_DIR}/depth2x/converter_flexion_nxn.h.inl"
+    "${CMAKE_CURRENT_LIST_DIR}/depth2x/converter_flexion_normalized.h.inl"
+    "${CMAKE_CURRENT_LIST_DIR}/depth2x/converter_flexion_angle.h.inl"
     "${CMAKE_CURRENT_LIST_DIR}/depth2x/converter_laserscan.h.inl"
     "${CMAKE_CURRENT_LIST_DIR}/depth2x/converter_max_curve.h.inl"
     )

@@ -208,6 +208,23 @@ class coordinate
         res.d = difference;
         return res;
     }
+    coordinate<Real, Frame> operator+(const coordinate<Real, Frame>& p) const
+        noexcept {
+        coordinate<Real, Frame> res;
+        auto                    sum = base_class::d + p.d;
+
+        res.d = sum;
+        return res;
+    }
+    coordinate<Real, Frame> operator*(const float& f) const
+        noexcept {
+        coordinate<Real, Frame> res;
+        res.d[0] = base_class::d[0] * f;
+        res.d[1] = base_class::d[1] * f;
+        res.d[2] = base_class::d[2] * f;
+
+        return res;
+    }
 };
 
 template <typename Real>

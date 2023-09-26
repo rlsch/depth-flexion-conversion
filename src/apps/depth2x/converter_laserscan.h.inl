@@ -6,10 +6,16 @@ bool range_converter<Intrinsic>::process_file(
 
     /// The input 'depth_image' is already in range-form as its beeing
     /// preprocessed.
-    cv::Mat depth_16bit(depth_image.h(), depth_image.w(), CV_16U);
-    depth_image.data().convertTo(depth_16bit, CV_16U);
+    cv::Mat depth;
+    if (this->_files.saveAs16Bit) {
+        depth = cv::Mat(depth_image.h(), depth_image.w(), CV_16U);
+        depth_image.data().convertTo(depth, CV_16U);
+    } else {
+        depth = cv::Mat(depth_image.h(), depth_image.w(), CV_8U);
+        depth_image.data().convertTo(depth, CV_8U);
+    }
     bool success =
-        cv::imwrite(fmt::format(this->_files.output, idx), depth_16bit);
+        cv::imwrite(fmt::format(this->_files.output, idx), depth);
 
     return success;
 }

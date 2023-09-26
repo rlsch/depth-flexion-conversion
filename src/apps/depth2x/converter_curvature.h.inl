@@ -6,10 +6,18 @@ bool gauss_curv_converter<Intrinsic>::process_file(
 
     const auto gauss =
         depth_to_gaussian_curvature(depth_image, this->intrinsic);
-    const auto converted = conversion::curvature_to_image<ushort>(
-        gauss, depth_image, {lower_bound}, {upper_bound});
-    const bool success =
-        cv::imwrite(fmt::format(this->_files.output, idx), converted.data());
+    bool success;
+    if (this->_files.saveAs16Bit) {
+        const auto converted = conversion::curvature_to_image<ushort>(
+            gauss, depth_image, {lower_bound}, {upper_bound});
+        success =
+            cv::imwrite(fmt::format(this->_files.output, idx), converted.data());
+    } else {
+        const auto converted = conversion::curvature_to_image<uchar>(
+            gauss, depth_image, {lower_bound}, {upper_bound});
+        success =
+            cv::imwrite(fmt::format(this->_files.output, idx), converted.data());
+    }
 
     return success;
 }
