@@ -23,7 +23,7 @@ if ! ${exe} --version ; then
 fi
 
 print_info "Testing for bad input files"
-if ${exe} --input "does-not-exist-{}.feature" \
+if ${exe} --input "does-not-exist-{}.feat" \
     --start 0 --end 1 \
     keypoint-distribution \
     --image-width 960 --image-height 540 ; then
@@ -31,7 +31,7 @@ if ${exe} --input "does-not-exist-{}.feature" \
     exit 1
 fi
 
-if ${exe} --input "does-not-exist-{}.feature" \
+if ${exe} --input "does-not-exist-{}.feat" \
     --start 0 --end 1 \
     min-distance \
     --image-width 960 --image-height 540 ; then

@@ -69,44 +69,44 @@ configure_file(keypoint_plotter/flexion-0.png
                keypoint_plotter/flexion-0.png COPYONLY)
 configure_file(keypoint_plotter/flexion-1.png
                keypoint_plotter/flexion-1.png COPYONLY)
-configure_file(keypoint_plotter/sift-0.feature
-               keypoint_plotter/sift-0.feature COPYONLY)
-configure_file(keypoint_plotter/sift-1.feature
-               keypoint_plotter/sift-1.feature COPYONLY)
-configure_file(keypoint_plotter/compressed-0.feature.gz
-               keypoint_plotter/compressed-0.feature.gz COPYONLY)
-configure_file(keypoint_plotter/compressed-1.feature.gz
-               keypoint_plotter/compressed-1.feature.gz COPYONLY)
+configure_file(keypoint_plotter/sift-0.feat
+               keypoint_plotter/sift-0.feat COPYONLY)
+configure_file(keypoint_plotter/sift-1.feat
+               keypoint_plotter/sift-1.feat COPYONLY)
+configure_file(keypoint_plotter/compressed-0.feat.gz
+               keypoint_plotter/compressed-0.feat.gz COPYONLY)
+configure_file(keypoint_plotter/compressed-1.feat.gz
+               keypoint_plotter/compressed-1.feat.gz COPYONLY)
 add_tool_test(keypoint_plotter test_keypoint_plotter)
 add_tool_test(keypoint_plotter test_keypoint_plotter_only_feature_files)
 add_tool_test(keypoint_plotter test_keypoint_plotter_overwrite_image)
 
 ################################################################################
 
-configure_file(feature_performance/sift-0.feature
-               feature_performance/sift-0.feature COPYONLY)
-configure_file(feature_performance/sift-1.feature
-               feature_performance/sift-1.feature COPYONLY)
-configure_file(feature_performance/orb-0.feature
-               feature_performance/orb-0.feature COPYONLY)
-configure_file(feature_performance/orb-1.feature
-               feature_performance/orb-1.feature COPYONLY)
-configure_file(feature_performance/surf-1-octave-0.feature.gz
-               feature_performance/surf-1-octave-0.feature.gz COPYONLY)
-configure_file(feature_performance/surf-1-octave-1.feature.gz
-               feature_performance/surf-1-octave-1.feature.gz COPYONLY)
-configure_file(feature_performance/surf-1-octave-0.feature.gz
-               feature_performance/surf-1-octave-0.feature.gz COPYONLY)
-configure_file(feature_performance/does-not-exist-1.feature.gz
-               feature_performance/does-not-exist-1.feature.gz COPYONLY)
-configure_file(feature_performance/does-not-exist-0.feature.gz
-               feature_performance/does-not-exist-0.feature.gz COPYONLY)
-configure_file(feature_performance/does-not-exist-1.feature.gz
-               feature_performance/does-not-exist-1.feature.gz COPYONLY)
-configure_file(feature_performance/does-not-exist-0.feature.gz
-               feature_performance/does-not-exist-0.feature.gz COPYONLY)
-configure_file(feature_performance/does-not-exist-1.feature.gz
-               feature_performance/does-not-exist-1.feature.gz COPYONLY)
+configure_file(feature_performance/sift-0.feat
+               feature_performance/sift-0.feat COPYONLY)
+configure_file(feature_performance/sift-1.feat
+               feature_performance/sift-1.feat COPYONLY)
+configure_file(feature_performance/orb-0.feat
+               feature_performance/orb-0.feat COPYONLY)
+configure_file(feature_performance/orb-1.feat
+               feature_performance/orb-1.feat COPYONLY)
+configure_file(feature_performance/surf-1-octave-0.feat.gz
+               feature_performance/surf-1-octave-0.feat.gz COPYONLY)
+configure_file(feature_performance/surf-1-octave-1.feat.gz
+               feature_performance/surf-1-octave-1.feat.gz COPYONLY)
+configure_file(feature_performance/surf-1-octave-0.feat.gz
+               feature_performance/surf-1-octave-0.feat.gz COPYONLY)
+configure_file(feature_performance/does-not-exist-1.feat.gz
+               feature_performance/does-not-exist-1.feat.gz COPYONLY)
+configure_file(feature_performance/does-not-exist-0.feat.gz
+               feature_performance/does-not-exist-0.feat.gz COPYONLY)
+configure_file(feature_performance/does-not-exist-1.feat.gz
+               feature_performance/does-not-exist-1.feat.gz COPYONLY)
+configure_file(feature_performance/does-not-exist-0.feat.gz
+               feature_performance/does-not-exist-0.feat.gz COPYONLY)
+configure_file(feature_performance/does-not-exist-1.feat.gz
+               feature_performance/does-not-exist-1.feat.gz COPYONLY)
 configure_file(feature_performance/kinect_intrinsic.txt
                feature_performance/kinect_intrinsic.txt COPYONLY)
 configure_file(feature_performance/filtered-0.png

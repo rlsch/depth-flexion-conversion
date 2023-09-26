@@ -13,7 +13,7 @@ helpers="$2"
 print_info "Using \"${exe}\" as driver executable"
 
 if ! ${exe} \
-    --input sift-{}.feature \
+    --input sift-{}.feat \
     --original-file depth-{}.png \
     --output keypoints-depth-{}.png \
     --start 0 --end 1 ; then
@@ -27,7 +27,7 @@ if [ ! -f keypoints-depth-0.png ] || \
 fi
 
 if ! ${exe} \
-    --input sift-{}.feature \
+    --input sift-{}.feat \
     --original-file color-{}.png \
     --output keypoints-color-{}.png \
     --start 0 --end 1 ; then

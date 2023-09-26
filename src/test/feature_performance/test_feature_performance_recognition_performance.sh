@@ -13,7 +13,7 @@ helpers="$2"
 print_info "Using \"${exe}\" as driver executable"
 
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \
@@ -27,7 +27,7 @@ fi
 print_info "Write the statistics to a file"
 rm -f recognition.stat
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     --output recognition.stat \
     recognition-performance \
@@ -45,7 +45,7 @@ fi
 print_info "Write the histograms to a file"
 rm -f backprojection_error.dat relevant_histo.dat tp_histo.dat fp_histo.dat
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \
@@ -74,7 +74,7 @@ fi
 print_info "Testing Plotting the backprojections of keypoints"
 rm -f backprojected-1.png
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \
@@ -93,7 +93,7 @@ fi
 print_info "Testing Plotting the backprojections of keypoints with different config"
 rm -f backprojected-styled-1.png
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \
@@ -119,7 +119,7 @@ fi
 print_info "Testing masks for the field of view"
 rm -f masked-backprojected-1.png
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \
@@ -140,7 +140,7 @@ fi
 print_info "Testing bad masks"
 rm -f unmasked-backprojected-1.png
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \
@@ -159,7 +159,7 @@ if [ ! -f unmasked-backprojected-1.png ] ; then
 fi
 rm -f unmasked-backprojected-1.png
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \
@@ -179,7 +179,7 @@ fi
 
 print_info "Testing bad file input for depth images"
 if ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "does-not-exist-{}.png" \
@@ -192,7 +192,7 @@ fi
 
 print_info "Testing bad file input for poses"
 if ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \
@@ -206,7 +206,7 @@ fi
 print_info "Testing bad original files input for backprojection"
 rm -f backprojected-1.png
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \
@@ -226,7 +226,7 @@ fi
 print_info "Testing bad path for backprojection output"
 rm -f backprojected-1.jpg
 if ! ${exe} \
-    --input "surf-1-octave-{}.feature.gz" \
+    --input "surf-1-octave-{}.feat.gz" \
     --start 0 --end 1 \
     recognition-performance \
     --depth-image "filtered-{}.png" \

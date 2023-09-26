@@ -13,7 +13,7 @@ helpers="$2"
 print_info "Using \"${exe}\" as driver executable"
 
 if ! ${exe} \
-    --input "sift-{}.feature" \
+    --input "sift-{}.feat" \
     --start 0 --end 1 \
     keypoint-distribution \
     --image-width 960 --image-height 540 ; then
@@ -21,7 +21,7 @@ if ! ${exe} \
     exit 1
 fi
 
-if ! ${exe} --input "orb-{}.feature" \
+if ! ${exe} --input "orb-{}.feat" \
     --start 0 --end 1 \
     keypoint-distribution \
     --image-width 960 --image-height 540 ; then
@@ -31,7 +31,7 @@ fi
 
 print_info "Test if statistics are written to a file if requested"
 rm -f orb.stat
-if ! ${exe} --input "orb-{}.feature" \
+if ! ${exe} --input "orb-{}.feat" \
     --start 0 --end 1 \
     --output orb.stat \
     keypoint-distribution \
@@ -46,7 +46,7 @@ fi
 
 print_info "Test if histograms are written to file properly"
 rm -f orb_response.dat orb_size.dat orb_distance.dat orb_distribution.dat
-if ! ${exe} --input "orb-{}.feature" \
+if ! ${exe} --input "orb-{}.feat" \
     --start 0 --end 1 \
     keypoint-distribution \
     --image-width 960 --image-height 540 \
@@ -64,7 +64,7 @@ if [ ! -f orb_response.dat ] || [ ! -f orb_size.dat ] ||
 fi
 
 print_info "Testing for bad input files"
-if ${exe} --input "does-not-exist-{}.feature" \
+if ${exe} --input "does-not-exist-{}.feat" \
     --start 0 --end 1 \
     keypoint-distribution \
     --image-width 960 --image-height 540 ; then

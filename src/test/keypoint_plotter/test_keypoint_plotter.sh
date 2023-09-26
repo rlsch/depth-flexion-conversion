@@ -24,7 +24,7 @@ fi
 
 print_info "Testing that bad files are causing breakage."
 if ${exe} \
-    --input sift-{}.feature \
+    --input sift-{}.feat \
     --output keypoints-{}.not-an-image \
     --start 0 --end 1 ; then
     print_error "Non-existing file formats should not be outputted by the plotter"

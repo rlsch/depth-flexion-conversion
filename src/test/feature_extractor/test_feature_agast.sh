@@ -19,15 +19,15 @@ set -v
 
 if ! ${exe} \
    -i "flexion-{}.png" \
-   -o "agast-{}.feature" \
+   -o "agast-{}.feat" \
    -s 0 -e 1 \
    detector agast \
    descriptor null ; then
     print_error "AGAST keypoints without descriptor did not work"
     exit 1
 fi
-if  [ ! -f agast-0.feature ] || \
-    [ ! -f agast-1.feature ]; then
+if  [ ! -f agast-0.feat ] || \
+    [ ! -f agast-1.feat ]; then
     print_error "Did not create expected output files."
     exit 1
 fi

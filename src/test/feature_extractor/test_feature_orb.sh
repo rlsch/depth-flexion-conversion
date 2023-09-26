@@ -18,14 +18,14 @@ rm -f orb-*
 set -v
 
 if ! ${exe} \
-   -i "flexion-{}.png" -o "orb-{}.feature" \
+   -i "flexion-{}.png" -o "orb-{}.feat" \
    -s 0 -e 1 \
    detector orb descriptor orb ; then
     print_error "Default ORB-Detection did not work"
     exit 1
 fi
-if  [ ! -f orb-0.feature ] || \
-    [ ! -f orb-1.feature ]; then
+if  [ ! -f orb-0.feat ] || \
+    [ ! -f orb-1.feat ]; then
     print_error "Did not create expected output files."
     exit 1
 fi

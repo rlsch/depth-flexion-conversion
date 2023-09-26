@@ -18,14 +18,14 @@ rm -f sift-*
 set -v
 
 if ! ${exe} \
-    -i "flexion-{}.png" -o "sift-{}.feature" \
+    -i "flexion-{}.png" -o "sift-{}.feat" \
     -s 0 -e 1 \
     detector sift descriptor sift ; then
     print_error "Default SIFT-Detection did not work"
     exit 1
 fi
-if  [ ! -f sift-0.feature ] || \
-    [ ! -f sift-1.feature ]; then
+if  [ ! -f sift-0.feat ] || \
+    [ ! -f sift-1.feat ]; then
     print_error "Did not create expected output files."
     exit 1
 fi

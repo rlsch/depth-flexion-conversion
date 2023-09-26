@@ -18,14 +18,14 @@ rm -f surf-*
 set -v
 
 if ! ${exe} \
-    -i "flexion-{}.png" -o "surf-{}.feature" \
+    -i "flexion-{}.png" -o "surf-{}.feat" \
     -s 0 -e 1 \
     detector surf descriptor surf ; then
     print_error "Default SURF-Detection did not work"
     exit 1
 fi
-if  [ ! -f surf-0.feature ] || \
-    [ ! -f surf-1.feature ]; then
+if  [ ! -f surf-0.feat ] || \
+    [ ! -f surf-1.feat ]; then
     print_error "Did not create expected output files."
     exit 1
 fi

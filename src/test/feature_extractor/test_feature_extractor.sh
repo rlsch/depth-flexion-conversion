@@ -35,13 +35,13 @@ fi
 
 rm -f compressed-*
 if ! ${exe} -i "flexion-{}.png" -s 0 -e 1 \
-     -o "compressed-{}.feature.gz" \
+     -o "compressed-{}.feat.gz" \
      detector akaze descriptor akaze ; then
     print_error "Writing compressed files failed"
     exit 1
 fi
-if  [ ! -f compressed-0.feature.gz ] || \
-    [ ! -f compressed-1.feature.gz ] ; then
+if  [ ! -f compressed-0.feat.gz ] || \
+    [ ! -f compressed-1.feat.gz ] ; then
     print_error "Did not create expected output files."
     exit 1
 fi
