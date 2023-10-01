@@ -8,7 +8,7 @@
 Depth images are converted into a derived feature image
 that allows classical computer vision algorithm to detect features, like with classical camera images.
 
-This repository belongs to the IROS 2023 publication "Converting Depth Images and Point Clouds for Feature-based Pose Estimation" by Lösch et.al (see section Citing / Citation).
+This repository belongs to the IROS 2023 publication "Converting Depth Images and Point Clouds for Feature-based Pose Estimation" by Lösch et.al (see section [How to cite](#how-to-cite)).
 
 
 ### Abstract
@@ -63,7 +63,7 @@ Using a `docker` container with `ubuntu:18.04` should definitly work!
 
 Bug Reports are always welcome!
 
-## Citing / Citation
+## How to cite
 ```
 @inproceedings{Losch2023,
     author    = {L{\"o}sch, Robert and Sastuba, Mark and Toth, Jonas and Jung, Bernhard},
