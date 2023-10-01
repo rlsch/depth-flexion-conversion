@@ -7,8 +7,87 @@
   <meta name="keywords" content="depth, image, 3d, scene, feature, point, cloud, pose, estimation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Converting Depth Images and Point Clouds for Feature-based Pose Estimation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <!-- <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/img-slider.css">
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="static/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="static/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="static/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="static/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/img-slider.js"></script>
+
 </head>
 <body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/rlsch/depth-flexion-conversion">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://tu-freiberg.de/universitaet/fakultaeten/fakultaet-mathematik-und-informatik/institut-fuer-informatik">
+            TU Bergakademie Freiberg
+          </a>
+          <a class="navbar-item" href="https://github.com/TUBAF-IFI-VR">
+            Github - Chair of  Virtual Reality and Multimedia
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
 
 <section class="hero">
   <div class="hero-body">
@@ -18,27 +97,135 @@
           <h1 class="title is-1 publication-title">Converting Depth Images and Point Clouds for Feature-based Pose Estimation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="mailto:Robert.Loesch@informatik.tu-freiberg.de">Robert Lösch</a><sup>1</sup>,</span>
+              <a href="mailto:Robert.Loesch@informatik.tu-freiberg.de?subject=Paper 'Converting Depth Images and Point Clouds for Feature-based Pose Estimation'">Robert Lösch</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="mailto:sastubam@dzsf.bund.de">Mark Sastuba</a><sup>2</sup>,</span>
+              <a href="mailto:sastubam@dzsf.bund.de?subject=Paper 'Converting Depth Images and Point Clouds for Feature-based Pose Estimation'">Mark Sastuba</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="mailto:development@jonas-toth.eu">Jonas Toth</a><sup>1</sup>,
+              <a href="mailto:development@jonas-toth.eu?subject=Paper 'Converting Depth Images and Point Clouds for Feature-based Pose Estimation'">Jonas Toth</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="mailto:jung@informatik.tu-freiberg.de">Bernhard Jung</a><sup>1</sup>,
+              <a href="mailto:jung@informatik.tu-freiberg.de?subject=Paper 'Converting Depth Images and Point Clouds for Feature-based Pose Estimation'">Bernhard Jung</a><sup>1</sup>,
             </span>
           </div>
-
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Technical University Bergakademie Freiberg,</span>
             <span class="author-block"><sup>2</sup>German Centre for Rail Traffic Research at the Federal Railway Authority</span>
           </div>
+          <h1 style="font-size:24px;font-weight:bold">IROS 2023</h1>
 
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/pdf/IROS23_0200_FI.pdf"
+                   target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=WKgKbKXJUic"
+                   target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/rlsch/depth-conversions"
+                   target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span> -->
+              <br>
+              <span class="link-block">
+                <a href="./static/pdf/IROS23_0200_FI_supplementary_material.pdf"
+                   target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supplementary Material</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="text-align: center;">
+      <img src="./static/videos/all-types-labeled.gif" alt="This is an animated gif image, but it does not move"/>
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/vid/all-types-labeled.gif"
+                type="video/gif">
+      </video> -->
+      <h2 class="subtitle has-text-centered">
+        Flexion images convert depth images into a rotation invariant, more descriptive format and enables them to be used in traditional computer vision algorithms like feature matching.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="slider">
+          <img src="./static/images/blender_depth_0001.png" class="slider-img">
+        </div>
+        <div class="slider">
+          <img src="./static/images/blender_depth_0030.png" class="slider-img">
+        </div>
+        <div class="slider">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="slider">
+          <img src="./static/images/blender_depth_0030.png" class="slider-img">
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
 
 
 <section class="section">
@@ -77,20 +264,253 @@
     </div>
     <!--/ Abstract. -->
 
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/WKgKbKXJUic?si=OfaqKxNbW7HcXr_4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section-->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3">Converting synthetic and real world depth data into Flexion images.</h2>
+    <div class="columns is-centered">
+
+      <!-- Blender. -->
+      <div class="column">
+        <div class="content">
+          <h3 class="title is-4">Synthetic Scene with distinct objects</h3>
+          <p>
+            Fine details that are basically hidden in the depth image become visible when converted to Flexion images.
+          </p>
+          <div class="img-comp-container">
+            <div class="img-comp-img">
+              <img src="./static/images/compare/blender/flexion0001.png" width="300" height="300" style="max-width:none;">
+            </div>
+            <div class="img-comp-img img-comp-overlay">
+              <img src="./static/images/compare/blender/blender_depth_0001.png" width="300" height="300" style="max-width:none;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ Blender. -->
+
+      <!-- Zhang. -->
+      <div class="column">
+        <h3 class="title is-4">“Multi-FoV” synthetic data set</h3>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              The conversion to Flexion images enables a camera path in a <a href="https://rpg.ifi.uzh.ch/fov.html" target="_blank">synthetic city</a> to be estimated solely based on depth information.
+            </p>
+            <div class="img-comp-container">
+              <div class="img-comp-img">
+                <img src="./static/images/compare/Zhang/flexion0001.png" width="300" height="225" style="max-width:none;">
+              </div>
+              <div class="img-comp-img img-comp-overlay">
+                <img src="./static/images/compare/Zhang/img0001_0.png" width="300" height="225" style="max-width:none;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ Zhang. -->
+    </div>
+
+    <div class="columns is-centered">
+      <!-- TUM. -->
+      <div class="column">
+        <div class="content">
+          <h3 class="title is-4">Real world RGB-D data</h3>
+          <p>
+            Depth images of the <a href="https://cvg.cit.tum.de/data/datasets/rgbd-dataset" target="_blank">TUM RGB-D</a> dataset can also be used to perform feature based odometry or SLAM. Depicted is a frame of the sequence <a href="https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download#freiburg1_desk" target="_blank">fr1/desk</a>.
+          </p>
+          <div class="img-comp-container">
+            <div class="img-comp-img">
+              <img src="./static/images/compare/tum_desk/flexion0378.png" width="300" height="225" style="max-width:none;">
+            </div>
+            <div class="img-comp-img img-comp-overlay">
+              <img src="./static/images/compare/tum_desk/1305031465.984183.png" width="300" height="225" style="max-width:none;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ TUM. -->
+
+      <!-- LIDAR. -->
+      <div class="column">
+        <h3 class="title is-4">Terrestrial Laser Scan</h3>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              Dense point clouds, e.g., produced by terrestrial laser scanners, can easily be depicted as depth images. Therefore, they can also be converted to Flexion images and thus can be used for feature-based computer vision algorithms.
+            </p>
+            <div class="img-comp-container">
+              <div class="img-comp-img">
+                <img src="./static/images/compare/laserscan/laserscan_flexion_filtered/0005.png" width="400" height="178" style="max-width:none;">
+              </div>
+              <div class="img-comp-img img-comp-overlay">
+                <img src="./static/images/compare/laserscan/depth/0005.png" width="400" height="178" style="max-width:none;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--/ LIDAR. -->
+
+    </div> <!--/"columns is-centered -->
+
+
+    <!-- Variants. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Variants</h2>
+
+        <h3 class="title is-4">Changing the neighborhood size</h3>
+        <div class="content has-text-justified">
+          <p>
+            By increasing the distance to the neighboring points used to calculate normal vectors, the Flexion images slightly change. The larger the neighborhood, the thicker the edges and the less noise but also less details the images contain.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/variants/flexion3x3_0018.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Flexion<sub>3x3</sub></p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <div class="interpolation-img">
+              <input class="slider is-fullwidth is-large is-info"
+                     id="interpolation-slider"
+                     step="1" min="1" max="6" value="0" type="range">
+            </div>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/variants/flexion13x13_0018.png"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">Flexion<sub>13x13</sub></p>
+          </div>
+        </div>
+        <br/>
+
+        <!-- Re-rendering. -->
+        <!-- <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Concurrent Work. -->
+
   </div>
 </section>
+
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@inproceedings{Losch2023,
-  author    = {L{\"o}sch, Robert and Sastuba, Mark and Toth, Jonas Jung, Bernhard},
+  author    = {L{\"o}sch, Robert and Sastuba, Mark and Toth, Jonas and Jung, Bernhard},
   title     = {Converting Depth Images and Point Clouds for Feature-based Pose Estimation},
   booktitle = {2023 {{IEEE}}/{{RSJ International Conference}} on {{Intelligent Robots}} and {{Systems}} ({{IROS}})},
   year      = {2023},
 }</code></pre>
   </div>
 </section>
+
+<script>
+  /*Execute a function that will execute an image compare function for each element with the img-comp-overlay class:*/
+  initComparisons();
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/pdf/IROS23_0200_FI.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/rlsch" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
