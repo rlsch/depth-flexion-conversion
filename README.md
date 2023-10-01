@@ -1,22 +1,22 @@
-# master-thesis
+# Converting Depth Images and Point Clouds for Feature-based Pose Estimation
 
 ![Feature Images from Depth Images](docs/all-types-labeled.gif)
 
-Repository containing all code and stuff for my master thesis.
-For more specific documentation check the `docs/` directory.
 
 ## What is this
 
-The ultimate goal of this project is to localize depth images in a known 3D model.
-To achieve this the depth images are converted into a derived feature image
-that allows classical computer vision algorithm to detect features, like with
-classical camera images.
-From this point on, all algorithms for optical localization are applicable to
-depth images.
-This model can either be a laserscan, a reconstructed mesh or a dense pointcloud.
+Depth images are converted into a derived feature image
+that allows classical computer vision algorithm to detect features, like with classical camera images.
 
-All the science for that is written in my [master thesis (english)](docs/master-thesis-jonas-toth-compressed.pdf).
-The colloquium was done with these [slides (german)](https://docs.google.com/presentation/d/1AgL29JgIPFa-JzBv1tCFNl6jaYqtM5NkOHd3LxAx9p4/edit?usp=sharing).
+This repository belongs to the IROS 2023 publication "Converting Depth Images and Point Clouds for Feature-based Pose Estimation" by Lösch et.al (see section Citing / Citation).
+
+
+### Abstract
+In recent years, depth sensors have become more and more affordable and have found their way into a growing amount of robotic systems. However, mono- or multi-modal sensor registration, often a necessary step for further processing, faces many challenges on raw depth images or point clouds. 
+
+This paper presents a method of converting depth data into images capable of visualizing spatial details that are basically hidden in traditional depth images. After noise removal, a neighborhood of points forms two normal vectors whose difference is encoded into this new conversion. Compared to Bearing Angle images, our method yields brighter, higher- contrast images with more visible contours and more details. 
+
+We tested feature-based pose estimation of both conversions in a visual odometry task and RGB-D SLAM. For all tested features, AKAZE, ORB, SIFT, and SURF, our new Flexion images yield better results than Bearing Angle images and show great potential to bridge the gap between depth data and classical computer vision. Source code is available here: [https://rlsch.github.io/depth-flexion-conversion](https://rlsch.github.io/depth-flexion-conversion).
 
 ## Examples
 
@@ -50,55 +50,26 @@ $ ls
 
 ## Getting the software
 
-### Docker
+### Compiling
 
-It is always possible to get the latest and greatest version as docker image.
-
-```bash
-$ # Getting access to the container registry
-$ docker login git.informatik.tu-freiberg.de:5050
-
-$ # Pulling Debian Based Image
-$ docker pull git.informatik.tu-freiberg.de:5050/jtoth/master-thesis:latest
-> Download log
-
-$ # Alternative: Alpine Linux based image (musl and other hardened software)
-$ docker pull git.informatik.tu-freiberg.de:5050/jtoth/master-thesis:alpine-edge
-> Download log
-```
-
-Running the command requires mounting of software or creating a container
-based on that one.
-
-### Binaries
-
-You can download binaries from the CI setup.
-The `old-linux-most-portable` build in the stage `platforms` is your best bet.
-It is a ubuntu 12.04 based build but only requires the default linux system
-libraries as dynamic dependencies. It should e.g. work on CentOS 7 and other
-non-ubuntu systems as well. The only requirement is an glibc>2.15.
-
-See the
-[Pipelines Page](https://git.informatik.tu-freiberg.de/jtoth/master-thesis/pipelines?scope=branches&page=1)
-that provides a download link for the artifacts. If there is no artifact that
-works on your system you need to fall back to compiling on your own.
-
-This allows for the most customization and most control over the final
-executable. This project tries to support many compilers and environment but is
+This project tries to support many compilers and environment but is
 very Linux oriented. For more information on building see the
 [Compilation Reference](docs/compilation.md).
 
-Please note, that artifacts from the `platform` might stage require
-`libjpeg-dev` and `libpng-dev` libraries as they are dynamically linked.
-On Linux system you can check `ldd <binary-executable>` if all dynamic
-dependencies are resolved. If yes, the binary should work, given the `libc` is
-new enough ;)
+Using a `docker` container with `ubuntu:18.04` should definitly work! 
 
-Using a `docker` container with `ubuntu:18.04` should definitly work! More
-robust ways to distribute, e.g. packages, are implemented when necessary and
-time allows it.
 
 ## Contributing
 
-Right now, not so much. As this is part of my master thesis I need to develop
-it on my own. Bug Reports are of course always welcome!
+Bug Reports are always welcome!
+
+## Citing / Citation
+```
+@inproceedings{Losch2023,
+    author    = {L{\"o}sch, Robert and Sastuba, Mark and Toth, Jonas and Jung, Bernhard},
+    title     = {Converting Depth Images and Point Clouds for Feature-based Pose Estimation},
+    booktitle = {2023 {{IEEE}}/{{RSJ International Conference}} on {{Intelligent Robots}} and {{Systems}} ({{IROS}})},
+    year      = {2023},
+}
+```
+
