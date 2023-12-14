@@ -1,4 +1,5 @@
 # Converting Depth Images and Point Clouds for Feature-based Pose Estimation
+[Link to official paper](doi.org/10.1109/IROS55552.2023.10341758)
 
 ![Feature Images from Depth Images](docs/all-types-labeled.gif)
 
@@ -8,7 +9,7 @@
 Depth images are converted into a derived feature image
 that allows classical computer vision algorithm to detect features, like with classical camera images.
 
-This repository belongs to the IROS 2023 publication "Converting Depth Images and Point Clouds for Feature-based Pose Estimation" by Lösch et.al (see section [How to cite](#how-to-cite)).
+This repository belongs to the [IROS 2023 publication "Converting Depth Images and Point Clouds for Feature-based Pose Estimation"](https://ieeexplore.ieee.org/document/10341758) by Lösch et.al (see section [How to cite](#how-to-cite)).
 
 
 ### Abstract
@@ -64,12 +65,20 @@ Using a `docker` container with `ubuntu:18.04` should definitly work!
 Bug Reports are always welcome!
 
 ## How to cite
+[Link to official paper](doi.org/10.1109/IROS55552.2023.10341758)
 ```
 @inproceedings{Losch2023,
-    author    = {L{\"o}sch, Robert and Sastuba, Mark and Toth, Jonas and Jung, Bernhard},
-    title     = {Converting Depth Images and Point Clouds for Feature-based Pose Estimation},
-    booktitle = {2023 {{IEEE}}/{{RSJ International Conference}} on {{Intelligent Robots}} and {{Systems}} ({{IROS}})},
-    year      = {2023},
+  author    = {L{\"o}sch, Robert and Sastuba, Mark and Toth, Jonas and Jung, Bernhard},
+  title     = {Converting Depth Images and Point Clouds for Feature-based Pose Estimation},
+  booktitle = {2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2023},
+  pages     = {3422-3428},
+  doi={10.1109/IROS55552.2023.10341758}
 }
 ```
+
+or
+
+R. Lösch, M. Sastuba, J. Toth and B. Jung, "Converting Depth Images and Point Clouds for Feature-based Pose Estimation," 2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Detroit, MI, USA, 2023, pp. 3422-3428, doi: 10.1109/IROS55552.2023.10341758.
+
 
